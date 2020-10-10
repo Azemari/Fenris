@@ -20,10 +20,18 @@ namespace ProjectFenris.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.Name == null)
+                return Redirect("Home/Welcome");
+
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Welcome()
         {
             return View();
         }
