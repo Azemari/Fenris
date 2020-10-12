@@ -1,5 +1,7 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+* {
+    font-family: 'Oxygen', sans-serif;
+}
 
 a.navbar-brand {
   white-space: normal;
@@ -69,3 +71,116 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Landing Page
+-------------------------------------------------- */
+
+.landing-image {
+    width: 100%;
+    max-height: 650px;
+    background-image: url("../images/LandingImage.jpg");
+}
+
+.tag {
+    position: absolute;
+    top: 200px;
+    right:300px;
+    z-index: 1000;
+    padding: 5px;
+    color: #FFFFFF;
+    width: 500px;
+}
+
+    .tag h2 {
+        text-shadow: 2px 2px 8px rgba(150, 150, 150, 0.5);
+    }
+
+.tag .btn-landing {
+    -webkit-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    -moz-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+}
+
+.btn-landing {
+    padding: 10px 25px;
+    background-color: white;
+    color: black;
+    border-radius: 25px;
+    margin: 10px;
+    font-weight: bold;
+    
+}
+
+.landing-content {
+    margin-top: 50px;
+    padding: 10px;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .landing-content p, .landing-content h2 {
+    }
+    .landing-content img {
+    width: 100%;
+    max-height: 100%;
+    border-radius: 50px 0;
+}
+
+/* Login/Register & Account Management
+-------------------------------------------------- */
+.login-image{
+    background-image: url("../images/abstract1.jfif");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px 0 0 20px;
+}
+
+.login-panel {
+    min-height: 480px;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.navigation-cross{
+    color: black;
+    text-decoration: none;
+    float:right;
+}
+    .navigation-cross:hover {
+        color: #2f3640;
+    }
+
+.btn-main{
+    border: 1px solid black;
+    border-radius: 25px;
+}
+    .btn-main:hover {
+        background-color: #545b62;
+        color: white;
+        border: 1px solid white;
+    }
+.btn-danger {
+    border: none;
+    background-color: #e84118;
+}
+    .btn-danger:hover {
+        color: #e84118;
+        background-color: white;
+        border: 1px solid #e84118;
+    }
+
+.account-link{
+    color: black;
+}
+    .account-link:hover {
+        color: #353b48;
+    }
+    .account-link.active {
+        color: black !important;
+        background-color: #dcdde1 !important;
+    }

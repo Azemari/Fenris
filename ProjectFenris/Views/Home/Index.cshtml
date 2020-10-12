@@ -6,14 +6,6 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    @{
-        if (User.Identity.Name == null)
-        {
-        }
-        else
-        {
-            <p>@User.Identity.Name</p>
-        }
-    }
-    <p>If user is not logged in. Create a welcome page as website is useless if you're not logged in.</p>
+    <p>@User.Identity.Name</p>
+
 </div>
