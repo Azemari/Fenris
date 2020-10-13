@@ -1,0 +1,99 @@
+﻿@model ProjectFenris.Models.Budget
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h4>Create Individual Budget Tracker</h4>
+    <hr />
+    <div class="row justify-content-center">
+        <form asp-action="Create" class="form-inline">
+                <input type="hidden" value="Individual" />
+            <div class="col-12">
+
+                <div id="Error" class="alert alert-danger">
+                    <p id="Error-Message"></p>
+                </div>
+
+                <div id="Budget-Allowance" class="content">
+                    <p>How much money do you want to allocate yourself?</p>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" id="CurrencySelect">
+                                <option value="£">£</option>
+                                <option value="$">$</option>
+                                <option value="€">€</option>
+                                <option value="¥">¥</option>
+                                <option value="₱">₱</option>
+                                <option value="₹">₹</option>
+                                <option value="฿">฿</option>
+                                <option value="₿">₿</option>
+                            </select>
+                        </div>
+                        <input asp-for="Allowance" placeholder="100" class="form-control w-90" aria-label="Amount">
+                        <div class="input-group-append">
+                            <select class="custom-select" id="PeriodSelect">
+                                <option value="none">one time</option>
+                                <option value="day">per Day</option>
+                                <option value="week">per Week</option>
+                                <option value="month">per Month</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <br />
+                    <input type="button" id="Budget-Button-Allowance" class="btn btn-main float-right ml-2" value="Next" />
+                    <button class="btn btn-main float-right" asp-controller="Budget" asp-action="Index">Back</button>
+                </div>
+                <div id="Budget-Expenditure" class="content">
+                    <p>How much money do you expect to spend each period?</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span id="Budget-Expenditure-Currency" class="input-group-text">£</span>
+                        </div>
+                        <input asp-for="Expenditure" placeholder="" class="form-control" />
+                    </div>
+                    <br />
+                    <input type="button" id="Budget-Button-Next-Expenditure" class="btn btn-main float-right ml-2" value="Next" />
+                    <input type="button" id="Budget-Button-Back-Expenditure" class="btn btn-main float-right" value="Back" />
+                </div>
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Allowance" class="control-label"></label>
+                    <input asp-for="Allowance" class="form-control" />
+                    <span asp-validation-for="Allowance" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Expenditure" class="control-label"></label>
+                    <input asp-for="Expenditure" class="form-control" />
+                    <span asp-validation-for="Expenditure" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Income" class="control-label"></label>
+                    <input asp-for="Income" class="form-control" />
+                    <span asp-validation-for="Income" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Users" class="control-label"></label>
+                    <input asp-for="Users" class="form-control" />
+                    <span asp-validation-for="Users" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/Budget.js"></script>

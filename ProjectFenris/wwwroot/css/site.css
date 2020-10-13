@@ -184,3 +184,25 @@ body {
         color: black !important;
         background-color: #dcdde1 !important;
     }
+
+/*Site-wide CSS
+-------------------------------------------------- */
+.content {
+    padding: 25px;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 10px;
+    -webkit-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    -moz-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    background-color: #F5F6FA;
+}
+
+.hiddenLink{
+    text-decoration: none;
+    color:unset;
+}
+    .hiddenLink:hover {
+        text-decoration: none;
+        color: unset;
+    }

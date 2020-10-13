@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Logging;
 using ProjectFenris.Data;
 using ProjectFenris.Models;
@@ -27,14 +28,24 @@ namespace ProjectFenris.Controllers
             _userManager = userManager;
         }
 
+
         public IActionResult Index()
         {
-                if (User.Identity.Name == null)
+            //Redirect the user if they aren't logged in
+            if (User.Identity.Name == null)
                 return Redirect("Home/Welcome");
 
             Guid userId = Guid.Parse(_userManager.GetUserId(User));
             Customer customer = _context.Customers.Find(userId);
-            return View(customer);
+            var budget = _context.Budgets.Select(b => b.UserId == userId).ToList();
+
+            //if user has no budgets prompt the user to create a new one
+            if(budget.Count == 0)
+            {
+                return Redirect("Budget/Index");
+            }
+
+            return View(budget);
         }
 
         public IActionResult Privacy()

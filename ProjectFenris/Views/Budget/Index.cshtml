@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Budget";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Start a new expenses sheet</h2>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4 mb-4 flex-column h-100 d-flex">
+            <a asp-controller="Budget" asp-action="CreateIndividual" class="hiddenLink">
+                <div class="content text-center">
+                    <p>Individual</p>
+                    <i class="fas fa-user fa-4x pb-2"></i>
+                    <p>Start an expenses sheet for yourself. You can add additional users later.</p>
+                </div>
+                </a>
+        </div>
+        <div class="col-12 col-md-4 mb-4 flex-column h-100 d-flex">
+            <a asp-controller="Budget" asp-action="CreateGroup" class="hiddenLink">
+                <div class="content text-center flex-column">
+                    <p>Group</p>
+                    <i class="fas fa-users fa-4x pb-2"></i>
+                    <p>Start an expenses sheet for a group. You can add/remove users at any time.</p>
+                </div>
+            </a>
+</div>
+    </div>
+</div>
+
