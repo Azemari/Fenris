@@ -2,6 +2,7 @@
 function HideAll() {
     $("#Budget-Allowance").hide();
     $("#Budget-Expenditure").hide();
+    $("#Budget-Income").hide();
 }
 
 function DisplayError(msg) {
@@ -25,6 +26,7 @@ var Currency;
 //Update Currency for the form
 function UpdateCurrency() {
     $("#Budget-Expenditure-Currency").text(Currency);
+    $("#Budget-Income-Currency").text(Currency);
 }
 //Set Currency Variable
 $("#CurrencySelect").click(function () {
@@ -50,13 +52,35 @@ $("#Budget-Button-Allowance").click(function () {
 //Expenditure
 $("#Budget-Button-Next-Expenditure").click(function () {
     HideError();
-    $("#Budget-Expenditure").hide();
-    //$("#Budget-").slideToggle();
+    if ($("#Expenditure").val() != "") {
+        $("#Budget-Expenditure").hide();
+        $("#Budget-Income").slideToggle();
+    }
+    else {
+        DisplayError("Please define an expenditure");
+    }
 });
 $("#Budget-Button-Back-Expenditure").click(function () {
     HideError();
-    $("#Budget-Expenditure").hide();
-    $("#Budget-Allowance").slideToggle();
+        $("#Budget-Expenditure").hide();
+        $("#Budget-Allowance").slideToggle();
+});
+
+//Income
+$("#Budget-Button-Next-Income").click(function () {
+    HideError();
+    if ($("#Income").val() != "") {
+        $("#Budget-Income").hide();
+        //Submit Form
+    }
+    else {
+        DisplayError("Please define an Income");
+    }
+});
+$("#Budget-Button-Back-Income").click(function () {
+    HideError();
+    $("#Budget-Income").hide();
+    $("#Budget-Expenditure").slideToggle();
 });
 //#endregion
 

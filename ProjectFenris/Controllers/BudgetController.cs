@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ProjectFenris.Models;
 
 namespace ProjectFenris.Controllers
 {
     public class BudgetController : Controller
     {
+        private readonly UserManager<IdentityUser> _userManager;
+        public BudgetController(UserManager<IdentityUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         // GET: Budget/Index
         public ActionResult Index()
         {
@@ -30,8 +38,10 @@ namespace ProjectFenris.Controllers
         // POST: Budget/CreateIndividual
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateIndividual(IFormCollection collection)
+        public ActionResult CreateIndividual(Budget budget)
         {
+            //Get the user ID
+            var id = _userManager.GetUserId(User);
             try
             {
                 return RedirectToAction(nameof(Index));

@@ -206,3 +206,9 @@ body {
         text-decoration: none;
         color: unset;
     }
+
+
+#rPaper{
+    border: 1px solid red;
+    height: 250px;
+}
