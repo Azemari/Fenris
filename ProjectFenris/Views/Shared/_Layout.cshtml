@@ -14,18 +14,17 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <partial name="_Header" />
-    }
-
-            @RenderBody()
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2020 - ProjectFenris - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <partial name="_SideNav" />
+            <div id="main">
+                @RenderBody()
             </div>
-        </footer>
+        }
+        else
+        {
+         @RenderBody()
+        }
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,7 @@ namespace ProjectFenris.Models
 {
     public class Budget
     {
+        [Key]
         public int Id { get; set; }
 
         public BudgetType Type { get; set; }

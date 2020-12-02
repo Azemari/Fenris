@@ -10,6 +10,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Logging;
 using ProjectFenris.Data;
 using ProjectFenris.Models;
+using ProjectFenris.Models.ViewModels;
 
 namespace ProjectFenris.Controllers
 {
@@ -35,9 +36,9 @@ namespace ProjectFenris.Controllers
             if (User.Identity.Name == null)
                 return Redirect("Home/Welcome");
 
-            Guid userId = Guid.Parse(_userManager.GetUserId(User));
-            Customer customer = _context.Customers.Find(userId);
-            var budget = _context.Budgets.Select(b => b.UserId == userId).ToList();
+            var userId = Guid.Parse(_userManager.GetUserId(User));
+            var customer = _context.Customers.Find(userId);
+            var budget = _context.Budgets.Where(b => b.UserId == userId).ToList();
 
             //if user has no budgets prompt the user to create a new one
             if(budget.Count == 0)
@@ -45,7 +46,13 @@ namespace ProjectFenris.Controllers
                 return Redirect("Budget/Index");
             }
 
-            return View(budget);
+            var viewModel = new DashboardViewModel
+            {
+                Budget = budget,
+                Customer = customer
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

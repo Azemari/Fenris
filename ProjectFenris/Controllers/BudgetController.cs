@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ProjectFenris.Data;
 using ProjectFenris.Models;
 
 namespace ProjectFenris.Controllers
@@ -12,9 +13,11 @@ namespace ProjectFenris.Controllers
     public class BudgetController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-        public BudgetController(UserManager<IdentityUser> userManager)
+        private readonly ApplicationDbContext _context;
+        public BudgetController(UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
             _userManager = userManager;
+            _context = context;
         }
 
         // GET: Budget/Index
@@ -40,10 +43,23 @@ namespace ProjectFenris.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateIndividual(Budget budget)
         {
-            //Get the user ID
-            var id = _userManager.GetUserId(User);
             try
             {
+                //Get the user ID
+                var id = _userManager.GetUserId(User);
+                var dto = new Budget
+                {
+                    Type = BudgetType.Individual,
+                    UserId = Guid.Parse(id),
+                    Currency = budget.Currency,
+                    Allowance = budget.Allowance,
+                    Range = budget.Range,
+                    Expenditure = budget.Expenditure,
+                    Income = budget.Income,
+                    Users = 1
+                };
+                _context.Add(dto);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
