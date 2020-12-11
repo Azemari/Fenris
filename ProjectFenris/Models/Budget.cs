@@ -26,6 +26,7 @@ namespace ProjectFenris.Models
         //Budget after calculations
         public int Remaining { get; set; }
 
+        //Fuck
         //Budget dividing by days remaining
         [NotMapped]
         public int Estimate { get; set; }
