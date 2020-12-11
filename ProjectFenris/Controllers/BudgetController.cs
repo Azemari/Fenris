@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProjectFenris.Data;
 using ProjectFenris.Models;
+using ProjectFenris.Utilities;
 
 namespace ProjectFenris.Controllers
 {
@@ -47,8 +48,10 @@ namespace ProjectFenris.Controllers
             {
                 //Get the user ID
                 var id = _userManager.GetUserId(User);
+                var remaining = budget.Allowance - budget.Expenditure + budget.Income;
                 var dto = new Budget
                 {
+                    Name = budget.Name,
                     Type = BudgetType.Individual,
                     UserId = Guid.Parse(id),
                     Currency = budget.Currency,
@@ -56,7 +59,11 @@ namespace ProjectFenris.Controllers
                     Range = budget.Range,
                     Expenditure = budget.Expenditure,
                     Income = budget.Income,
-                    Users = 1
+                    Users = 1,
+                    Remaining = remaining,
+                    Estimate = remaining / TimeRange.DaysUntilNextUpdate(budget.Range, DateTime.Now),
+                    CreationDate = DateTime.Now,
+                    LastUpdate = DateTime.Now
                 };
                 _context.Add(dto);
                 _context.SaveChanges();

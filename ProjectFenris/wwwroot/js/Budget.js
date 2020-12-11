@@ -3,6 +3,7 @@ function HideAll() {
     $("#Budget-Allowance").hide();
     $("#Budget-Expenditure").hide();
     $("#Budget-Income").hide();
+    $("#Budget-Name").hide();
 }
 
 function DisplayError(msg) {
@@ -71,6 +72,7 @@ $("#Budget-Button-Next-Income").click(function () {
     HideError();
     if ($("#Income").val() != "") {
         $("#Budget-Income").hide();
+        $("#Budget-Name").slideToggle();
         //Submit Form
     }
     else {
@@ -81,6 +83,23 @@ $("#Budget-Button-Back-Income").click(function () {
     HideError();
     $("#Budget-Income").hide();
     $("#Budget-Expenditure").slideToggle();
+});
+
+//Name
+$("#Budget-Button-Next-Name").click(function () {
+    HideError();
+    if ($("#Income").val() != "") {
+        $("#Budget-Name").hide();
+        //Submit Form
+    }
+    else {
+        DisplayError("Please define a name");
+    }
+});
+$("#Budget-Button-Back-Name").click(function () {
+    HideError();
+    $("#Budget-Name").hide();
+    $("#Budget-Income").slideToggle();
 });
 //#endregion
 

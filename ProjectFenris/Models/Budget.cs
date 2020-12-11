@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +16,19 @@ namespace ProjectFenris.Models
         public BudgetType Type { get; set; }
 
         public Guid UserId { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public DateTime LastUpdate { get; set; }
+
+        //Budget after calculations
+        public int Remaining { get; set; }
+
+        //Budget dividing by days remaining
+        [NotMapped]
+        public int Estimate { get; set; }
 
         public char Currency { get; set; }
 

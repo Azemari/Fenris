@@ -10,14 +10,14 @@
     <hr />
     <div class="row justify-content-center">
         <form asp-action="CreateIndividual" class="form-inline">
-                <input type="hidden" value="Individual" />
-                <div class="col-12">
+            <input type="hidden" value="Individual" />
+            <div class="col-12">
 
-                    <div id="Error" class="alert alert-danger">
-                        <p id="Error-Message"></p>
-                    </div>
+                <div id="Error" class="alert alert-danger">
+                    <p id="Error-Message"></p>
+                </div>
 
-                    @*Allowance*@
+                @*Allowance*@
                 <div id="Budget-Allowance" class="content">
                     <p>How much money do you want to allocate yourself?</p>
                     <div class="input-group">
@@ -33,7 +33,7 @@
                                 <option value="₿">₿</option>
                             </select>
                         </div>
-                        <input asp-for="Allowance" placeholder="350" value="35"  class="form-control w-90" aria-label="Amount">
+                        <input asp-for="Allowance" placeholder="350" value="35" class="form-control w-90" aria-label="Amount">
                         <div class="input-group-append">
                             <select asp-for="Range" class="custom-select" id="PeriodSelect">
                                 <option value="0">one time</option>
@@ -74,14 +74,28 @@
                     </div>
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <br />
-                    <input type="submit"  id="Budget-Button-Next-Income" class="btn btn-main float-right ml-2" value="Finish" />
+                    <input type="button" id="Budget-Button-Next-Income" class="btn btn-main float-right ml-2" value="Finish" />
                     <input type="button" id="Budget-Button-Back-Income" class="btn btn-main float-right" value="Back" />
                 </div>
-
                 <span asp-validation-for="Income" class="text-danger"></span>
+
             </div>
-        </form>
-    </div>
+            @*Name*@
+            <div id="Budget-Name" class="content">
+                <p>Finally, what would you like to name this budget?</p>
+                <div class="input-group mb-3">
+                    <input asp-for="Name" placeholder="Budget" class="form-control" />
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <br />
+                <input type="submit" id="Budget-Button-Next-Name" class="btn btn-main float-right ml-2" value="Finish" />
+                <input type="button" id="Budget-Button-Back-Name" class="btn btn-main float-right" value="Back" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+
+    </form>
+</div>
 
     <div>
         <a asp-action="Index">Cancel and exit</a>

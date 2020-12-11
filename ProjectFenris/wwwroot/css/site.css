@@ -50,11 +50,11 @@ a.navbar-brand {
     position: absolute;
     bottom: 0;
 }
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
     margin-left: 250px; /* Same as the width of the sidenav */
-    background-color: #f5f6fa;
     height:100%;
 }
 

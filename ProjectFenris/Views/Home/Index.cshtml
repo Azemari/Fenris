@@ -1,4 +1,5 @@
 ﻿@model ProjectFenris.Models.ViewModels.DashboardViewModel
+@using ProjectFenris.Utilities;
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -12,27 +13,37 @@
 </div>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome Back</h1>
+    <h2 class="display-4">Welcome Back</h2>
     <p>@Model.Customer.Username</p>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-6">
-            <div class="customContainer">
-                <h2>Budgets</h2>
+        <div class="col-3">
+            <div class="BudgetContainer">
+                <h2>Budgets</h2> 
                 @foreach (var budget in Model.Budget)
                 {
-                    <p>Budget 1</p>
-                    <p>
-                        <span>Expenditure: </span><span>@budget.Currency</span><span>@budget.Expenditure</span>
-                    </p>
-                    <p>
-                    <span>Allowance: </span><span>@budget.Currency</span><span>@budget.Allowance</span>
-                    </p>
-                    <p>
-                    <span>Income: </span><span>@budget.Currency</span><span>@budget.Income</span>
-                    </p>
+                    <div class="row justify-content-center">
+                        <p class="text-center">@budget.Name</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <h3 class="text-center">@budget.Currency@budget.Remaining.00</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                                <p>@budget.Estimate</p>
+                            @budget.LastUpdate
+
+                            <span>Expenditure: </span><span>@budget.Currency</span><span>@budget.Expenditure</span>
+                        </div>
+                        <div class="col-4">
+                            <span>Allowance: </span><span>@budget.Currency</span><span>@budget.Allowance</span>
+                        </div>
+                        <div class="col-4">
+                            <span>Income: </span><span>@budget.Currency</span><span>@budget.Income</span>
+                        </div>
+                    </div>
                 }
             </div>
         </div>
