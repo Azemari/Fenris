@@ -21,27 +21,40 @@
     <div class="row">
         <div class="col-3">
             <div class="BudgetContainer">
-                <h2>Budgets</h2> 
+                <h2 class="text-center">Budgets</h2> 
                 @foreach (var budget in Model.Budget)
                 {
                     <div class="row justify-content-center">
                         <p class="text-center">@budget.Name</p>
                     </div>
                     <div class="row justify-content-center">
-                        <h3 class="text-center">@budget.Currency@budget.Remaining.00</h3>
+                        <h3 class="text-center">@budget.Currency@budget.Remaining</h3>
                     </div>
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col-4">
-                                <p>@budget.Estimate</p>
-                            @budget.LastUpdate
-
-                            <span>Expenditure: </span><span>@budget.Currency</span><span>@budget.Expenditure</span>
+                            <p>Estimate: @budget.Currency@budget.Estimate</p>
                         </div>
                         <div class="col-4">
                             <span>Allowance: </span><span>@budget.Currency</span><span>@budget.Allowance</span>
                         </div>
                         <div class="col-4">
                             <span>Income: </span><span>@budget.Currency</span><span>@budget.Income</span>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                        <div class="col-4">
+                            <p>Last Updated: @budget.LastUpdate.ToShortDateString()</p>
+                        </div>
+                        <div class="col-4">
+                            <span>Expenditure: </span><span>@budget.Currency</span><span>@budget.Expenditure</span>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-6">
+                            @Html.ActionLink("Add Expense", "AddExpense", "Budget", budget.Id)
+                        </div>
+                        <div class="col-6">
+                            @Html.ActionLink("Add Income", "AddIncome", "Budget", budget.Id)
                         </div>
                     </div>
                 }
