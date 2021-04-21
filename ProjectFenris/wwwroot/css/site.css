@@ -278,3 +278,44 @@ body {
     border-radius: 5px;
     padding:10px;
 }
+
+.budget{
+    color:white;
+    width: 50px;
+}
+
+.budget:hover{
+    color:white;
+}
+
+.income {
+    background-color: #4cd137;
+    border-radius: 0 5px 5px 0;
+}
+    .income:hover {
+        background-color: #44bd32;
+    }
+
+.expense {
+    background-color: #e84118;
+    border-radius: 5px 0 0 5px;
+}
+    .expense:hover {
+        background-color: #c23616;
+    }
+
+.BudgetContainer {
+    background-color: #f5f6fa;
+    border-radius: 10px;
+    -webkit-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    -moz-box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+    box-shadow: 13px 10px 22px -15px rgba(120,120,120,1);
+}
+
+.edit {
+    position: relative;
+    float: right;
+    right: 10px;
+    color: #2f3640;
+    cursor: pointer;
+}

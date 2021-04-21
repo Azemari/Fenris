@@ -116,5 +116,19 @@ namespace ProjectFenris.Controllers
                 return View();
             }
         }
+
+        public ActionResult AddExpense(int id)
+        {
+            var budget = _context.Budgets.Find(id);
+
+            return View();
+        }
+
+        public ActionResult AddIncome(int id)
+        {
+            var budget = _context.Budgets.Find(id);
+
+            return View();
+        }
     }
 }
